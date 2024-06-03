@@ -11,21 +11,28 @@ UrbanKicks adalah website toko sepatu yang menyediakan berbagai macam sepatu tre
 - Proses checkout yang aman dan mudah.
 - Halaman profil pengguna untuk melihat dan mengubah informasi pribadi.
 
-## Instalasi
+## Kriteria Project
 
-1. Clone repositori ini ke direktori lokal Anda.
-2. Buka terminal dan navigasikan ke direktori repositori.
-3. Jalankan perintah `npm install` untuk menginstal semua dependensi.
-4. Jalankan perintah `npm start` untuk menjalankan server pengembangan.
+Terdiri dari halaman user dan halaman admin
+- [ ] Halaman Admin
+    - [ ] Terdapat login
+    - [ ] (optional) Multi level user
+    - [ ] Terdapat menu data master (1 table database) dan menu transaksi (table relasi min dengan relasi 1-n)
+    - [ ] Menerapkan CRUD, Pencarian dan Paginasi
+- [ ] Halaman User
+    - [ ] Minimal 3 menu / halaman (data diambil dari database)
 
-## Kontribusi
+## Kriteria Database
 
-Kami sangat terbuka untuk kontribusi dari komunitas. Jika Anda ingin berkontribusi pada proyek ini, silakan ikuti langkah-langkah berikut:
+- [ ] Minimal 3 table, lebih tidak apa-apa (terdapat relasi)
+- [ ] Terdapat table master dan table transaksi
+- [ ] Antara table master dan table transaksi terdapat relasi
 
-1. Fork repositori ini.
-2. Buat branch baru dengan fitur yang ingin Anda tambahkan atau perbaiki.
-3. Lakukan perubahan yang diperlukan.
-4. Buat pull request ke branch utama.
+## Kriteria Operasi Program Terkait Database
+
+- [ ] Terdapat join (minimal 1-n)
+- [ ] (optional) Terdapat minimal satu jenis aggregate function
+- [ ] Terdapat fungsi create, read, update, delete (CRUD), dan search
 
 ## Lisensi
 
