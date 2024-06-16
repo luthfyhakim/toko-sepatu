@@ -19,19 +19,19 @@ Terdiri dari halaman user dan halaman admin
     - [ ] (optional) Multi level user
     - [ ] Terdapat menu data master (1 table database) dan menu transaksi (table relasi min dengan relasi 1-n)
     - [ ] Menerapkan CRUD, Pencarian dan Paginasi
-- [ ] Halaman User
-    - [ ] Minimal 3 menu / halaman (data diambil dari database)
+- [x] Halaman User
+    - [x] Minimal 3 menu / halaman (data diambil dari database)
 
 ## Kriteria Database
 
-- [ ] Minimal 3 table, lebih tidak apa-apa (terdapat relasi)
-- [ ] Terdapat table master dan table transaksi
-- [ ] Antara table master dan table transaksi terdapat relasi
+- [x] Minimal 3 table, lebih tidak apa-apa (terdapat relasi)
+- [x] Terdapat table master dan table transaksi
+- [x] Antara table master dan table transaksi terdapat relasi
 
 ## Kriteria Operasi Program Terkait Database
 
-- [ ] Terdapat join (minimal 1-n)
-- [ ] (optional) Terdapat minimal satu jenis aggregate function
+- [x] Terdapat join (minimal 1-n)
+- [x] (optional) Terdapat minimal satu jenis aggregate function
 - [ ] Terdapat fungsi create, read, update, delete (CRUD), dan search
 
 ## Lisensi
