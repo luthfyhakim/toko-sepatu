@@ -186,7 +186,7 @@
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                     <div class="navbar-profile">
                         <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
-                        <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                        <p class="mb-0 d-none d-sm-block navbar-profile-name"><?= $_SESSION['nama'] ?></p>
                         <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                     </div>
                 </a>
@@ -209,7 +209,7 @@
                     
                     <div class="dropdown-divider"></div>
                     
-                    <a class="dropdown-item preview-item">
+                    <a href="konfirmasi_logout.php" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
                                 <i class="mdi mdi-logout text-danger"></i>

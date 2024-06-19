@@ -7,7 +7,7 @@
                         <img src="assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">
                     </div>
                     <div class="col-5 col-sm-7 col-xl-8 p-0">
-                        <h4 class="mb-1 mb-sm-0">Welcome, Hakim !</h4>
+                        <h4 class="mb-1 mb-sm-0">Welcome, <?= $_SESSION['nama'] ?> !</h4>
                         <p class="mb-0 font-weight-normal d-none d-sm-block">Admin Dashboard Toko Sepatu - Urban Kicks</p>
                     </div>
                 </div>

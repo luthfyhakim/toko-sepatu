@@ -15,10 +15,10 @@ UrbanKicks adalah website toko sepatu yang menyediakan berbagai macam sepatu tre
 
 Terdiri dari halaman user dan halaman admin
 - [ ] Halaman Admin
-    - [ ] Terdapat login
-    - [ ] (optional) Multi level user
+    - [x] Terdapat login
+    - [x] (optional) Multi level user
     - [ ] Terdapat menu data master (1 table database) dan menu transaksi (table relasi min dengan relasi 1-n)
-    - [ ] Menerapkan CRUD, Pencarian dan Paginasi
+    - [x] Menerapkan CRUD, Pencarian dan Paginasi
 - [x] Halaman User
     - [x] Minimal 3 menu / halaman (data diambil dari database)
 
@@ -32,7 +32,7 @@ Terdiri dari halaman user dan halaman admin
 
 - [x] Terdapat join (minimal 1-n)
 - [x] (optional) Terdapat minimal satu jenis aggregate function
-- [ ] Terdapat fungsi create, read, update, delete (CRUD), dan search
+- [x] Terdapat fungsi create, read, update, delete (CRUD), dan search
 
 ## Lisensi
 
