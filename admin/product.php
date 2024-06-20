@@ -59,7 +59,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">List Products</h4>
-                                    <p class="card-description"> Add class <code>.table-hover</code></p>
+                                    <p class="card-description"> List Data <code>Product</code></p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <a href="add_product.php" type="button" class="btn btn-inverse-success btn-fw my-3"> + Add </a>
                                         <form action="product.php" method="get" class="search-form">
@@ -180,7 +180,7 @@
                                                             if ($halaman != $jmlh_halaman) {
                                                                 echo "
                                                                     <li class='page-item'>
-                                                                        <a class='page-link' href='product.php?product=$producthalaman=$setelah' aria-label='Next'>
+                                                                        <a class='page-link' href='product.php?product=$product&halaman=$setelah' aria-label='Next'>
                                                                             <span aria-hidden='true'>&raquo;</span>
                                                                         </a>
                                                                     </li>

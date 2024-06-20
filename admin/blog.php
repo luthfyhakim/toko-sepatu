@@ -7,6 +7,15 @@
 
     include_once("../koneksi.php");
     include_once("./partials/_head.php");
+
+    $batas = 5;
+	if (!isset($_GET['halaman'])) {
+		$posisi = 0;
+		$halaman = 1;
+	} else {
+		$halaman = $_GET['halaman'];
+		$posisi = ($halaman - 1) * $batas;
+	}
 ?>
 
 <body>
@@ -27,6 +36,186 @@
                                 <li class="breadcrumb-item"><a href="blog.php">Blog</a></li>
                             </ol>
                         </nav>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">List Blogs</h4>
+                                    <p class="card-description"> List Data <code>Blog</code></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a href="add_blog.php" type="button" class="btn btn-inverse-success btn-fw my-3"> + Add </a>
+                                        <form action="blog.php" method="get" class="search-form">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="blog" name="blog" placeholder="Search Blog">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Author</th>
+                                                    <th>Judul</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    $sql = "SELECT b.id, b.id_user, b.judul, b.tanggal, u.nama
+                                                            FROM blog b
+                                                            INNER JOIN user u
+                                                            ON b.id_user = u.id";
+                                                    
+                                                    if (isset($_GET['blog'])) {
+                                                        $blog = $_GET['blog'];
+                                                        $sql .= " WHERE b.judul LIKE '%$blog%'";
+                                                    }
+
+                                                    $sql .= " ORDER BY b.id ASC LIMIT $posisi, $batas";
+
+                                                    $result = mysqli_query($conn, $sql);
+
+                                                    while ($row = mysqli_fetch_row($result)) {
+                                                        $id = $row[0];
+                                                        $id_user = $row[1];
+                                                        $judul = $row[2];
+                                                        $tanggal = $row[3];
+                                                        $author = $row[4];
+                                                ?>
+                                                <tr>
+                                                    <td width="15%"><?= $id; ?></td>
+                                                    <td width="20%"><?= $author; ?></td>
+                                                    <td width="35%"><?= $judul; ?></td>
+                                                    <td width="20%"><?= $tanggal; ?></td>
+                                                    <td width="20%">
+                                                        <a href="edit_blog.php?id=<?= $id; ?>" type="button" class="btn btn-inverse-info">Edit</a>
+                                                        <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?= $judul; ?>?')) window.location.href = 'blog.php?aksi=hapus&id=<?= $id; ?>'" type="button" class="btn btn-inverse-danger">Delete</a>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex flex-row-reverse mt-2">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination">
+                                                <?php
+                                                    $sql_p = "SELECT b.id, b.id_user, b.judul, b.tanggal, u.nama
+                                                              FROM blog b
+                                                              INNER JOIN user u
+                                                              ON b.id_user = u.id";
+                                            
+                                                    if (isset($_GET['blog'])) {
+                                                        $blog = $_GET['blog'];
+                                                        $sql_p .= " WHERE b.judul LIKE '%$blog%'";
+                                                    }
+
+                                                    $sql_p .= " ORDER BY b.id ASC";
+
+                                                    $query = mysqli_query($conn, $sql_p);
+                                                    $jmlh_data = mysqli_num_rows($query);
+                                                    $jmlh_halaman = ceil($jmlh_data / $batas);
+
+                                                    if ($jmlh_data == 0) {
+
+                                                    } else if ($jmlh_data == 1) {
+                                                        echo "
+                                                            <li class='page-item disabled'>
+                                                                <a class='page-link' href='' aria-label='Previous'>
+                                                                    <span aria-hidden='true'>&laquo;</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class='page-item active'><a class='page-link' href=''>1</a></li>
+                                                            <li class='page-item disabled'>
+                                                                <a class='page-link' href='' aria-label='Next'>
+                                                                    <span aria-hidden='true'>&raquo;</span>
+                                                                </a>
+                                                            </li>
+                                                        ";
+                                                    } else {
+                                                        $sebelum = $halaman - 1;
+                                                        $setelah = $halaman + 1;
+
+                                                        if (isset($_GET['blog'])) {
+                                                            $blog = $_GET['blog'];
+
+                                                            if ($halaman != 1) {
+                                                                echo "
+                                                                    <li class='page-item'>
+                                                                        <a class='page-link' href='blog.php?blog=$blog&halaman=$sebelum' aria-label='Previous'>
+                                                                            <span aria-hidden='true'>&laquo;</span>
+                                                                        </a>
+                                                                    </li>
+                                                                ";
+                                                            }
+
+                                                            for ($i = 1; $i <= $jmlh_halaman; $i++) {
+                                                                if ($i != $halaman) {
+                                                                    echo "<li class='page-item'><a class='page-link' href='blog.php?blog=$blog&halaman=$i'>$i</a></li>";
+                                                                } else {
+                                                                    echo "<li class='page-item active'><a class='page-link' href=''>$i</a></li>";
+                                                                }
+                                                            }
+
+                                                            if ($halaman != $jmlh_halaman) {
+                                                                echo "
+                                                                    <li class='page-item'>
+                                                                        <a class='page-link' href='blog.php?blog=$blog&halaman=$setelah' aria-label='Next'>
+                                                                            <span aria-hidden='true'>&raquo;</span>
+                                                                        </a>
+                                                                    </li>
+                                                                ";
+                                                            }
+                                                        } else {
+                                                            if ($halaman != 1) {
+                                                                echo "
+                                                                    <li class='page-item'>
+                                                                        <a class='page-link' href='blog.php?halaman=$sebelum' aria-label='Previous'>
+                                                                            <span aria-hidden='true'>&laquo;</span>
+                                                                        </a>
+                                                                    </li>
+                                                                ";
+                                                            }
+
+                                                            for ($i = 1; $i <= $jmlh_halaman; $i++) {
+                                                                if ($i != $halaman) {
+                                                                    echo "<li class='page-item'><a class='page-link' href='blog.php?halaman=$i'>$i</a></li>";
+                                                                } else {
+                                                                    echo "<li class='page-item active'><a class='page-link' href=''>$i</a></li>";
+                                                                }
+                                                            }
+
+                                                            if ($halaman != $jmlh_halaman) {
+                                                                echo "
+                                                                    <li class='page-item'>
+                                                                        <a class='page-link' href='blog.php?halaman=$setelah' aria-label='Next'>
+                                                                            <span aria-hidden='true'>&raquo;</span>
+                                                                        </a>
+                                                                    </li>
+                                                                ";
+                                                            }
+                                                        }
+                                                    }
+
+                                                    // for ($i = 1; $i <= $jmlh_halaman; $i++) {
+                                                    //     if ($i > $halaman - 5 and $i < $halaman + 5) {
+                                                    //         if ($i != $halaman) {
+                                                    //             echo "<li class='page-item'><a class='page-link' href='product.php?product=$product&halaman=$i'>$i</a></li>";
+                                                    //         } else {
+                                                    //             echo "<li class='page-item active'><a class='page-link' href=''>$i</a></li>";
+                                                    //         }
+                                                    //     }
+                                                    // }
+                                                ?>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
           

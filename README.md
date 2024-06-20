@@ -14,10 +14,10 @@ UrbanKicks adalah website toko sepatu yang menyediakan berbagai macam sepatu tre
 ## Kriteria Project
 
 Terdiri dari halaman user dan halaman admin
-- [ ] Halaman Admin
+- [x] Halaman Admin
     - [x] Terdapat login
     - [x] (optional) Multi level user
-    - [ ] Terdapat menu data master (1 table database) dan menu transaksi (table relasi min dengan relasi 1-n)
+    - [x] Terdapat menu data master (1 table database) dan menu transaksi (table relasi min dengan relasi 1-n)
     - [x] Menerapkan CRUD, Pencarian dan Paginasi
 - [x] Halaman User
     - [x] Minimal 3 menu / halaman (data diambil dari database)
