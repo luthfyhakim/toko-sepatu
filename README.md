@@ -2,13 +2,39 @@
 
 UrbanKicks adalah website toko sepatu yang menyediakan berbagai macam sepatu trendy dan stylish. Website ini dibangun dengan menggunakan teknologi web modern dan dirancang untuk memberikan pengalaman belanja yang nyaman bagi pengguna.
 
+## Instalasi
+- Pertama arahkan ke direktori `admin` :
+  ```sh
+  cd admin
+  ```
+
+- Instal dependensi :
+  ```sh
+  npm install
+  ```
+  > pastikan mempunyai nodejs terlebih dahulu
+
+- Lalu export file sql `toko_sepatu.sql`
+
+- Buka browser kemudian dari localhost arahkan ke :
+  > untuk halaman user
+  ```
+  /toko-sepatu/src/index.php
+  ```
+
+  > untuk halaman admin
+  ```
+  /toko-sepatu/admin/index.php
+  ```
+  **username:** `admin`
+  
+  **password:** `admin`
+
 ## Fitur
 
 - Tampilan responsif yang memastikan website dapat diakses dengan baik di berbagai perangkat.
 - Pencarian sepatu berdasarkan kategori, merek, dan harga.
 - Halaman produk yang menampilkan informasi detail tentang setiap sepatu.
-- Keranjang belanja yang memungkinkan pengguna untuk menambah, menghapus, dan mengubah jumlah sepatu yang akan dibeli.
-- Proses checkout yang aman dan mudah.
 - Halaman profil pengguna untuk melihat dan mengubah informasi pribadi.
 
 ## Kriteria Project
